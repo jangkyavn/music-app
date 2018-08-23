@@ -1,6 +1,7 @@
 package com.it.vietnv.ngovanviet_1412101031.tasks;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.it.vietnv.ngovanviet_1412101031.helpers.XMLDOMParser;
 import com.it.vietnv.ngovanviet_1412101031.interfaces.IAsyncListener;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 
 public class SongTask extends AsyncTask<String, Void, String> {
     private IAsyncListener listener = null;
-    private final String BASE_URL = "http://www.musicapp.somee.com";
+    private final String BASE_URL = "https://ct1801hpu.000webhostapp.com/music-app";
 
     public SongTask(IAsyncListener listener) {
         this.listener = listener;
@@ -36,7 +37,7 @@ public class SongTask extends AsyncTask<String, Void, String> {
         XMLDOMParser parser = new XMLDOMParser();
         Document document = parser.getDocument(s);
 
-        NodeList nodeList = document.getElementsByTagName("Song");
+        NodeList nodeList = document.getElementsByTagName("song");
 
         ArrayList<Song> arrNews = new ArrayList<>();
         Song song = null;
@@ -45,11 +46,11 @@ public class SongTask extends AsyncTask<String, Void, String> {
             Element element = (Element) nodeList.item(i);
 
             song = new Song();
-            song.setId(Integer.parseInt(parser.getValue(element, "Id")));
-            song.setSongName(parser.getValue(element, "SongName"));
-            song.setSingerName(parser.getValue(element, "SingerName"));
-            song.setAvatar(BASE_URL + parser.getValue(element, "SingerAvatar"));
-            song.setLink(BASE_URL + parser.getValue(element, "SongLink"));
+            song.setId(Integer.parseInt(parser.getValue(element, "id")));
+            song.setSongName(parser.getValue(element, "songName"));
+            song.setSingerName(parser.getValue(element, "singerName"));
+            song.setAvatar(BASE_URL + parser.getValue(element, "singerAvatar"));
+            song.setLink(BASE_URL + parser.getValue(element, "songLink"));
 
             arrNews.add(song);
         }

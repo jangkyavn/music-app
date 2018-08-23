@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
                 addEvents();
             }
-        }).execute("http://www.musicapp.somee.com/MusicApp.asmx/GetSongs");
+        }).execute("https://ct1801hpu.000webhostapp.com/music-app/index.php?format=xml");
     }
 
     private void addEvents() {
